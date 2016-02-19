@@ -40,6 +40,19 @@ describe('node-iptc extraction', function(){
     });
   });
 
+  it('should extract IPTC metadata from the image', function(done){
+    fs.readFile("./test/test4.jpeg", function(err, data) {
+      if (err) { throw err }
+      var extracted = iptc(data);
+      //var expected = require('./test1.jpeg.json');
+
+      console.log(JSON.stringify(extracted))
+      //assert.equal(JSON.stringify(extracted), JSON.stringify(expected));
+      done();
+
+    });
+  });
+
   it('should NOT extract IPTC metadata from the image because it has none', function(done){
     fs.readFile("./test/test_no_iptc.jpeg", function(err, data) {
       if (err) { throw err }
