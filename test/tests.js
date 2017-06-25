@@ -63,6 +63,16 @@ describe('node-iptc extraction', function(){
     });
   })
 
+  it('should correctly handle IPTC fields of length 2', function(done){
+    fs.readFile("./test/test5.jpeg", function(err, data) {
+      if (err) { throw err }
+      var extracted = iptc(data);
+      assert.equal(extracted["country_or_primary_location_code"],"US");
+      assert.equal(extracted["province_or_state"],"CT");
+      done();
+    });
+  });
+
 });
 
 
