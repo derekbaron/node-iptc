@@ -3,55 +3,24 @@ var iptc = require('../lib/iptc.js')
 var fs = require('fs')
 var assert = require('assert')
 
-describe('node-iptc extraction', function(){
-  it('should extract IPTC metadata from the image', function(done){
-    fs.readFile("./test/test2.jpeg", function(err, data) {
-      if (err) { throw err }
-      var extracted = iptc(data);
-      var expected = require('./test2.jpeg.json');
 
-      assert.equal(JSON.stringify(extracted), JSON.stringify(expected));
-      done();
+describe('node-iptc extraction json', function() {
+  return [1,2,3,4,6].map(function(i) {
+    return it('should extract IPTC metadata from "test' + i + '.jpeg" and match the expected JSON', function(done) {
+      fs.readFile("./test/test" + i + ".jpeg", function(err, data) {
+        if (err) { throw err }
+        var extracted = iptc(data);
+        var expected = require('./test' + i + '.jpeg.json');
 
-    });
-  });
+        assert.equal(JSON.stringify(extracted), JSON.stringify(expected));
+        done();
 
-  it('should extract IPTC metadata from the image', function(done){
-    fs.readFile("./test/test3.jpeg", function(err, data) {
-      if (err) { throw err }
-      var extracted = iptc(data);
-      var expected = require('./test3.jpeg.json');
+      });
+    })
+  })
+});
 
-      assert.equal(JSON.stringify(extracted), JSON.stringify(expected));
-      done();
-
-    });
-  });
-
-  it('should extract IPTC metadata from the image', function(done){
-    fs.readFile("./test/test1.jpeg", function(err, data) {
-      if (err) { throw err }
-      var extracted = iptc(data);
-      var expected = require('./test1.jpeg.json');
-
-      assert.equal(JSON.stringify(extracted), JSON.stringify(expected));
-      done();
-
-    });
-  });
-
-  it('should extract IPTC metadata from the image', function(done){
-    fs.readFile("./test/test4.jpeg", function(err, data) {
-      if (err) { throw err }
-      var extracted = iptc(data);
-      //var expected = require('./test1.jpeg.json');
-
-      console.log(JSON.stringify(extracted))
-      //assert.equal(JSON.stringify(extracted), JSON.stringify(expected));
-      done();
-
-    });
-  });
+describe('node-iptc extraction custom', function(){
 
   it('should NOT extract IPTC metadata from the image because it has none', function(done){
     fs.readFile("./test/test_no_iptc.jpeg", function(err, data) {
@@ -73,6 +42,5 @@ describe('node-iptc extraction', function(){
     });
   });
 
+
 });
-
-

@@ -1,0 +1,34 @@
+{
+  "caption": "Caption",
+  "caption_writer": [
+    "Cap writer"
+  ],
+  "headline": "Headline",
+  "special_instructions": "Special",
+  "by_line": [
+    "Author"
+  ],
+  "by_line_title": [
+    "Author Title"
+  ],
+  "credit": "Cred",
+  "source": "Src",
+  "object_name": "Title",
+  "date_created": "20171115",
+  "city": "City",
+  "sub_location": "Subloc",
+  "province_or_state": "Prov",
+  "country_or_primary_location_name": "Country",
+  "original_transmission_reference": "Reference",
+  "category": "Cateogory",
+  "supplemental_categories": [
+    "Supp Category 1",
+    "Sup Category 2"
+  ],
+  "urgency": "1",
+  "keywords": [
+    "Keyword1",
+    "Keyword2"
+  ],
+  "copyright_notice": "Copy"
+}
